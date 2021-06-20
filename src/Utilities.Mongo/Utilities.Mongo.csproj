@@ -1,8 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <RootnameSpace>MatrTech.Utilities.Mongo</RootnameSpace>
-  </PropertyGroup>
+    <RootNamespace>MatrTech.Utilities.Mongo</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <OutputPath>..\..\..\..\local-packages</OutputPath>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
 
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+ 
+    <MajorVersion>0</MajorVersion>
+    <MinorVersion>0</MinorVersion>
+    <PatchVersion>1</PatchVersion>
+    <BuildVersion>$([System.DateTime]::Now.ToString("HHmmss"))</BuildVersion>
+    <PackageVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion).$(BuildVersion)</PackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MatrTech.Utilities.Mongo.Extensions" Version="0.0.1" />
+  </ItemGroup>
 </Project>

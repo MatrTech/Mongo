@@ -9,8 +9,7 @@ namespace MatrTech.Utilities.Mongo.UnitTests
         [TestMethod]
         public void TestMethod1()
         {
-            IServiceCollection services;
-            //services.AddMongoDatabase();
+            
         }
     }
 }

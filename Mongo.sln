@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EE0CE18B-8F6B-4B69-ABB2-5D9800CEF8BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.Mongo", "src\Utilities.Mongo\Utilities.Mongo.csproj", "{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5F878BBB-5224-4508-8427-FAFD3FD084AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.Mongo.UnitTests", "tests\Utilities.Mongo.UnitTests\Utilities.Mongo.UnitTests.csproj", "{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Debug|x64.Build.0 = Debug|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Debug|x86.Build.0 = Debug|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Release|x64.ActiveCfg = Release|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Release|x64.Build.0 = Release|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Release|x86.Build.0 = Release|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Debug|x64.Build.0 = Debug|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Debug|x86.Build.0 = Debug|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Release|x64.ActiveCfg = Release|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Release|x64.Build.0 = Release|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6} = {EE0CE18B-8F6B-4B69-ABB2-5D9800CEF8BE}
+		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE} = {5F878BBB-5224-4508-8427-FAFD3FD084AF}
+	EndGlobalSection
+EndGlobal

@@ -21,4 +21,7 @@
     <Company>MatrTech</Company>
     <Copyright>MatrTech 2021</Copyright>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MongoDb.Driver" Version="2.12.4" />
+  </ItemGroup>
 </Project>

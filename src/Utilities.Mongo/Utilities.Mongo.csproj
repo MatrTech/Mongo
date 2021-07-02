@@ -22,6 +22,8 @@
     <Copyright>MatrTech 2021</Copyright>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MatrTech.Utilities.Extensions.Mongo" Version="0.0.2" />
+    <PackageReference Include="MatrTech.Utilities.Helpers" Version="0.0.1" />
     <PackageReference Include="MongoDb.Driver" Version="2.12.4" />
   </ItemGroup>
   <ItemGroup>

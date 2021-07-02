@@ -1,6 +1,7 @@
 ﻿using MatrTech.Utilities.Mongo.Models;
 using MongoDB.Driver;
 using System;
+using MatrTech.Utilities.Helpers;
 
 namespace MatrTech.Utilities.Mongo
 {
@@ -12,7 +13,7 @@ namespace MatrTech.Utilities.Mongo
             var client = new MongoClient(connectionUrl);
             IMongoDatabase database = client.GetDatabase(databaseName) ?? throw new NullReferenceException();
 
-            var result = Activator.CreateInstance(typeof(TContext), database);
+            var result = ActivatorHelper.CreateInstance<TContext>(database);
             return ((TContext?)result)!;
         }
     }

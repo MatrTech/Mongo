@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
+using MatrTech.Utilities.Extensions.Mongo;
 
 namespace MatrTech.Utilities.Mongo.UnitTests
 {
@@ -34,10 +35,10 @@ namespace MatrTech.Utilities.Mongo.UnitTests
         [TestMethod]
         public void Create_CheckIfNonExistingCollectionExists_ShouldBeFalse()
         {
-            var database = DatabaseManager.Create<TestContext>(connectionUrl, databaseName);
+            var database = DatabaseManager.Create<TestContext>(connectionUrl, $"{Guid.NewGuid()}");
             string collectionName = $"test-{Guid.NewGuid()}";
-            var collection = database.GetCollection<BsonDocument>(collectionName).Exists().Should();
-            collection.Should().NotBeNull();
+            database.CollectionExists(collectionName)
+                .Should().BeFalse();
         }
 
         [TestMethod]
@@ -56,7 +57,7 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             {
             }
 
-            public IMongoCollection<TestDocument> TestCollection { get; set; }
+            public IMongoCollection<TestDocument> TestCollection { get; set; } = null!;
         }
 
         private class NotContextDerived { }

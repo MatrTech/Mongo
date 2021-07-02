@@ -24,4 +24,7 @@
   <ItemGroup>
     <PackageReference Include="MongoDb.Driver" Version="2.12.4" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
 </Project>

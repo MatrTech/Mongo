@@ -5,11 +5,26 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EE0CE18B-8F6B-4B69-ABB2-5D9800CEF8BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.Mongo", "src\Utilities.Mongo\Utilities.Mongo.csproj", "{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Mongo", "src\Utilities.Mongo\Utilities.Mongo.csproj", "{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5F878BBB-5224-4508-8427-FAFD3FD084AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.Mongo.UnitTests", "tests\Utilities.Mongo.UnitTests\Utilities.Mongo.UnitTests.csproj", "{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Mongo.UnitTests", "tests\Utilities.Mongo.UnitTests\Utilities.Mongo.UnitTests.csproj", "{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFD5283B-625E-481F-A805-A33CBF719B03}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{ECF30142-2869-4DDA-A281-AA84AAF8BC44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CBFE82E1-AEED-4542-BD50-3A218AD3EA1A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +34,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,8 +61,15 @@ Global
 		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Release|x86.ActiveCfg = Release|Any CPU
 		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6} = {EE0CE18B-8F6B-4B69-ABB2-5D9800CEF8BE}
 		{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE} = {5F878BBB-5224-4508-8427-FAFD3FD084AF}
+		{CBFE82E1-AEED-4542-BD50-3A218AD3EA1A} = {ECF30142-2869-4DDA-A281-AA84AAF8BC44}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B181C5D1-B41A-4AD0-B28F-9FADD3EE4077}
 	EndGlobalSection
 EndGlobal

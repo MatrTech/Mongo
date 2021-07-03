@@ -8,7 +8,7 @@ using System;
 namespace MatrTech.Utilities.Mongo.UnitTests
 {
     [TestClass]
-    public class DatabaseManagerTests
+    public class ContextManagerTests
     {
         private const string connectionUrl = "mongodb://localhost:27017";
         private const string databaseName = "foo";
@@ -16,38 +16,46 @@ namespace MatrTech.Utilities.Mongo.UnitTests
         [TestMethod]
         public void Create_DerivedFromMongoContext_ShouldNotBeNull()
         {
-            var database = DatabaseManager.Create<TestContext>(connectionUrl, databaseName);
+            var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
 
-            database.Should().NotBeNull();
+            context.Should().NotBeNull();
         }
 
         [TestMethod]
         public void Create_GetCollectionAfterCreate_ShouldNotBeNull()
         {
-            var database = DatabaseManager.Create<TestContext>(connectionUrl, databaseName);
+            var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
             string collectionName = $"test-{Guid.NewGuid()}";
-            var collection = database.GetCollection<BsonDocument>(collectionName);
-            collection.InsertOne(new TestDocument().ToBsonDocument());
+            var collection = context.GetCollection<TestDocument>();
+            collection.InsertOne(new TestDocument());
             collection.Should().NotBeNull();
         }
 
         [TestMethod]
         public void Create_CheckIfNonExistingCollectionExists_ShouldBeFalse()
         {
-            var database = DatabaseManager.Create<TestContext>(connectionUrl, $"{Guid.NewGuid()}");
+            var context = ContextManager.Create<TestContext>(connectionUrl, $"{Guid.NewGuid()}");
             string collectionName = $"test-{Guid.NewGuid()}";
-            database.CollectionExists(collectionName)
+            context.CollectionExists(collectionName)
                 .Should().BeFalse();
         }
 
         [TestMethod]
         public void Create_CheckParentType_ShouldBeOfTypeMongoContext()
         {
-            var database = DatabaseManager.Create<TestContext>(connectionUrl, databaseName);
-            database.Should().BeAssignableTo<MongoContext>();
+            var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
+            context.Should().BeAssignableTo<MongoContext>();
         }
 
-        private class TestDocument { }
+        [TestMethod]
+        public void Foo_TestCase()
+        {
+            var context = ContextManager.Create<TestContext>(connectionUrl, $"{Guid.NewGuid()}");
+            var collection = context.TestCollection;
+            collection.InsertOne(new TestDocument());
+            Assert.IsTrue(false);
+        }
+        private class TestDocument : MongoDocumentBase { }
 
         private class TestContext : MongoContext
         {

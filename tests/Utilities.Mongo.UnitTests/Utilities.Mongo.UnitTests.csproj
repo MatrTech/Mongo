@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="fluentassertions" Version="5.10.3" />
-    <PackageReference Include="MatrTech.Utilities.Extensions.Mongo" Version="0.0.2.2107031339" />
+    <PackageReference Include="MatrTech.Utilities.Extensions.Mongo" Version="0.0.2.2107040041" />
 
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />

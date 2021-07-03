@@ -9,12 +9,13 @@
 
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
- 
+
     <MajorVersion>0</MajorVersion>
     <MinorVersion>0</MinorVersion>
     <PatchVersion>1</PatchVersion>
     <BuildVersion>$([System.DateTime]::Now.ToString("yyMMddHHmm"))</BuildVersion>
     <Version>$(MajorVersion).$(MinorVersion).$(PatchVersion).$(BuildVersion)</Version>
+    <AssemblyVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion)</AssemblyVersion>
 
     <PackageId>MatrTech.Utilities.Mongo</PackageId>
     <Authors>MatrTech</Authors>
@@ -25,8 +26,5 @@
     <PackageReference Include="MatrTech.Utilities.Extensions.Mongo" Version="0.0.2" />
     <PackageReference Include="MatrTech.Utilities.Helpers" Version="0.0.1" />
     <PackageReference Include="MongoDb.Driver" Version="2.12.4" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
   </ItemGroup>
 </Project>

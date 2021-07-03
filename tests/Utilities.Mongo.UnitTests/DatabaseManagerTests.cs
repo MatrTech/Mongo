@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using MatrTech.Utilities.Extensions.Mongo;
 
 namespace MatrTech.Utilities.Mongo.UnitTests
 {

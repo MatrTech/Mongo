@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace MatrTech.Utilities.Mongo.Interfaces
 {
-    public interface IMongoContext : IMongoDatabase
+    public interface IMongoContext
     {
         /// <summary>
         /// Checks to see if a collection exists within the context.

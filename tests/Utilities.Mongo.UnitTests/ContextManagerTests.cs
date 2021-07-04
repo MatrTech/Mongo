@@ -1,7 +1,6 @@
 using FluentAssertions;
 using MatrTech.Utilities.Mongo.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 
@@ -51,10 +50,10 @@ namespace MatrTech.Utilities.Mongo.UnitTests
         public void Foo_TestCase()
         {
             var context = ContextManager.Create<TestContext>(connectionUrl, $"{Guid.NewGuid()}");
-            var collection = context.TestCollection;
-            collection.InsertOne(new TestDocument());
+            context.TestCollection.InsertOne(new TestDocument());
             Assert.IsTrue(false);
         }
+
         private class TestDocument : MongoDocumentBase { }
 
         private class TestContext : MongoContext
@@ -64,7 +63,7 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             {
             }
 
-            public IMongoCollection<TestDocument> TestCollection { get; set; } = null!;
+            public MongoCollectionBase<TestDocument> TestCollection { get; set; } = null!;
         }
 
         private class NotContextDerived { }

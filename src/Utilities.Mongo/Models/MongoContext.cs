@@ -1,11 +1,10 @@
 using MatrTech.Utilities.Extensions.Mongo;
 using MatrTech.Utilities.Mongo.Interfaces;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace MatrTech.Utilities.Mongo.Models
@@ -14,6 +13,7 @@ namespace MatrTech.Utilities.Mongo.Models
     {
         private readonly IMongoDatabase database;
         private readonly IList<Type> collections = new List<Type>();
+
         public MongoContext(IMongoDatabase database)
         {
             this.database = database;
@@ -39,15 +39,25 @@ namespace MatrTech.Utilities.Mongo.Models
         private void InitializeCollections()
         {
             this.GetType().GetProperties()
-                .Where(propertyInfo => propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(IMongoCollection<>))
+                .Where(propertyInfo => propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(MongoCollectionBase<>))
                 .ToList()
                 .ForEach(propertyInfo =>
                 {
-                    var genericType = propertyInfo.PropertyType.GetGenericArguments().FirstOrDefault();
+                    Type baseType = typeof(MongoCollectionBase<>);
+                    Type propertyType = propertyInfo.PropertyType;
+                    var genericType = propertyType.GetGenericArguments().FirstOrDefault();
                     if (genericType != null && !collections.Contains(genericType))
                     {
                         collections.Add(genericType);
-                        var instance = Activator.CreateInstance(propertyInfo.PropertyType);
+                        var method = typeof(IMongoDatabase).GetMethod(nameof(IMongoDatabase.GetCollection));
+                        method = method?.MakeGenericMethod(propertyType) ?? throw new Exception();
+
+                        // TODO: verify name or get it from configuration
+                        var collectionName = propertyInfo.Name.Replace("Collection", "");
+                        var collectionInstance = method.Invoke(database, new object?[] { collectionName, null });
+
+                        TypeConverter converter = TypeDescriptor.GetConverter(propertyType);
+                        var instance = converter.ConvertFrom(collectionInstance);
                         propertyInfo.SetValue(this, instance);
                     }
                 });

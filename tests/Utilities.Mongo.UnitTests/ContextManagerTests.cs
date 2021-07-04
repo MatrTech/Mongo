@@ -17,7 +17,8 @@ namespace MatrTech.Utilities.Mongo.UnitTests
         {
             var databaseName = $"{Guid.NewGuid()}";
             ContextManager.Create<TestContext>(connectionUrl, databaseName)
-                .Should().NotBeNull();
+                .Should()
+                .NotBeNull();
         }
 
         [TestMethod]
@@ -27,7 +28,8 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
 
             context.GetCollection<TestDocument>()
-                .Should().NotBeNull();
+                .Should()
+                .NotBeNull();
         }
 
         [TestMethod]
@@ -36,15 +38,18 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             var context = ContextManager.Create<TestContext>(connectionUrl, $"{Guid.NewGuid()}");
             string collectionName = $"test-{Guid.NewGuid()}";
             context.CollectionExists(collectionName)
-                .Should().BeFalse();
+                .Should()
+                .BeFalse();
         }
 
         [TestMethod]
         public void Create_CheckParentType_ShouldBeOfTypeMongoContext()
         {
             var databaseName = $"{Guid.NewGuid()}";
-            var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
-            context.Should().BeAssignableTo<MongoContext>();
+
+            ContextManager.Create<TestContext>(connectionUrl, databaseName)
+                .Should()
+                .BeAssignableTo<MongoContext>();
         }
 
         [TestMethod]
@@ -54,7 +59,10 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
             var collection = context.TestCollection;
             collection.InsertOne(new TestDocument());
-            collection.Find(new BsonDocument()).CountDocuments().Should().Be(1);
+            collection.Find(new BsonDocument())
+                .CountDocuments()
+                .Should()
+                .Be(1);
         }
 
         [TestMethod]
@@ -63,7 +71,9 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             var databaseName = $"{Guid.NewGuid()}";
             var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
             context.TestCollection.InsertOne(new TestDocument());
-            context.CollectionExists("Test").Should().BeTrue();
+            context.CollectionExists("Test")
+                .Should()
+                .BeTrue();
         }
 
         private class TestDocument : MongoDocumentBase { }

@@ -13,8 +13,8 @@ namespace MatrTech.Utilities.Mongo
             var client = new MongoClient(connectionUrl);
             IMongoDatabase database = client.GetDatabase(databaseName) ?? throw new NullReferenceException();
 
-            var result = ActivatorHelper.CreateInstance<TContext>(database);
-            return result!;
+            var result = ActivatorHelper.CreateInstance<TContext>(database) ?? throw new NullReferenceException();
+            return result;
         }
     }
 }

@@ -50,15 +50,13 @@ namespace MatrTech.Utilities.Mongo.Models
                     {
                         collections.Add(genericType);
                         var method = typeof(IMongoDatabase).GetMethod(nameof(IMongoDatabase.GetCollection));
-                        method = method?.MakeGenericMethod(propertyType) ?? throw new Exception();
+                        method = method?.MakeGenericMethod(genericType) ?? throw new Exception();
 
                         // TODO: verify name or get it from configuration
                         var collectionName = propertyInfo.Name.Replace("Collection", "");
                         var collectionInstance = method.Invoke(database, new object?[] { collectionName, null });
 
-                        TypeConverter converter = TypeDescriptor.GetConverter(propertyType);
-                        var instance = converter.ConvertFrom(collectionInstance);
-                        propertyInfo.SetValue(this, instance);
+                        propertyInfo.SetValue(this, collectionInstance);
                     }
                 });
             // TODO: We might want to verify if the collection actually exist.

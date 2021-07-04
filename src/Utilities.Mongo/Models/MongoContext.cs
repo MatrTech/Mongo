@@ -59,7 +59,7 @@ namespace MatrTech.Utilities.Mongo.Models
                         method = method.MakeGenericMethod(genericType) ?? throw new Exception();
 
                         // TODO: verify name or get it from configuration
-                        var collectionName = propertyInfo.Name.Replace("Collection", "");
+                        var collectionName = propertyInfo.Name.Replace("Collection", string.Empty);
                         var collectionInstance = method.Invoke(database, new object?[] { collectionName, null });
 
                         propertyInfo.SetValue(this, collectionInstance);

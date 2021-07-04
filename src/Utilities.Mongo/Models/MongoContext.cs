@@ -32,9 +32,13 @@ namespace MatrTech.Utilities.Mongo.Models
         public IMongoCollection<TDocument> GetCollection<TDocument>()
             where TDocument : MongoDocumentBase
         {
-            var documentName = typeof(TDocument).ToString().Replace("Document", "");
+            var documentName = GetCollectionName<TDocument>();
             return database.GetCollection<TDocument>(documentName);
         }
+
+        private string GetCollectionName<TDocument>()
+            => typeof(TDocument).ToString().Replace("Document", "");
+
 
         private void InitializeCollections()
         {
@@ -44,7 +48,11 @@ namespace MatrTech.Utilities.Mongo.Models
                 .ForEach(propertyInfo =>
                 {
                     var genericType = propertyInfo.PropertyType.GetGenericArguments().FirstOrDefault();
-                    if (genericType != null && !collections.Contains(genericType))
+#if NETCOREAPP3_1
+                    if (!(genericType is null) && !collections.Contains(genericType))
+#else
+                    if (genericType is not null && !collections.Contains(genericType))
+#endif
                     {
                         collections.Add(genericType);
                         var instance = Activator.CreateInstance(propertyInfo.PropertyType);

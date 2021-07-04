@@ -11,24 +11,24 @@ namespace MatrTech.Utilities.Mongo.UnitTests
     public class ContextManagerTests
     {
         private const string connectionUrl = "mongodb://localhost:27017";
-        private const string databaseName = "foo";
 
         [TestMethod]
         public void Create_DerivedFromMongoContext_ShouldNotBeNull()
         {
-            var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
-
-            context.Should().NotBeNull();
+            var databaseName = $"{Guid.NewGuid()}";
+            ContextManager.Create<TestContext>(connectionUrl, databaseName)
+                .Should().NotBeNull();
         }
 
         [TestMethod]
         public void Create_GetCollectionAfterCreate_ShouldNotBeNull()
         {
+            var databaseName = $"{Guid.NewGuid()}";
             var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
             string collectionName = $"test-{Guid.NewGuid()}";
-            var collection = context.GetCollection<TestDocument>();
-            collection.InsertOne(new TestDocument());
-            collection.Should().NotBeNull();
+
+            context.GetCollection<TestDocument>()
+                .Should().NotBeNull();
         }
 
         [TestMethod]
@@ -43,19 +43,32 @@ namespace MatrTech.Utilities.Mongo.UnitTests
         [TestMethod]
         public void Create_CheckParentType_ShouldBeOfTypeMongoContext()
         {
+            var databaseName = $"{Guid.NewGuid()}";
             var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
             context.Should().BeAssignableTo<MongoContext>();
         }
 
         [TestMethod]
-        public void Foo_TestCase()
+        public void ContextCollection_ValidCollection_ElementInserted()
         {
-            var context = ContextManager.Create<TestContext>(connectionUrl, $"{Guid.NewGuid()}");
+            var databaseName = $"{Guid.NewGuid()}";
+            var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
             var collection = context.TestCollection;
             collection.InsertOne(new TestDocument());
-            Assert.IsTrue(false);
+            collection.Find(new BsonDocument()).CountDocuments().Should().Be(1);
         }
+
+        [TestMethod]
+        public void CollectionExists_ContextCollection_ShouldBeTrue()
+        {
+            var databaseName = $"{Guid.NewGuid()}";
+            var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
+            context.TestCollection.InsertOne(new TestDocument());
+            context.CollectionExists("Test").Should().BeTrue();
+        }
+
         private class TestDocument : MongoDocumentBase { }
+        private class OtherTestDocument : MongoDocumentBase { }
 
         private class TestContext : MongoContext
         {
@@ -65,6 +78,7 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             }
 
             public IMongoCollection<TestDocument> TestCollection { get; set; } = null!;
+            public IMongoCollection<OtherTestDocument> OtherTestCollection { get; set; } = null!;
         }
 
         private class NotContextDerived { }

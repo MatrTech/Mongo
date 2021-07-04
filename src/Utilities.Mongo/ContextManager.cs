@@ -5,6 +5,9 @@ using System;
 
 namespace MatrTech.Utilities.Mongo
 {
+    /// <summary>
+    /// Manager of everything involving MongoContexts
+    /// </summary>
     public class ContextManager
     {
         public static TContext Create<TContext>(string connectionUrl, string databaseName)

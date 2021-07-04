@@ -25,7 +25,6 @@ namespace MatrTech.Utilities.Mongo.UnitTests
         {
             var databaseName = $"{Guid.NewGuid()}";
             var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
-            string collectionName = $"test-{Guid.NewGuid()}";
 
             context.GetCollection<TestDocument>()
                 .Should().NotBeNull();

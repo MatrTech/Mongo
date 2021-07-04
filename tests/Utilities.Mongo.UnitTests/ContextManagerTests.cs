@@ -1,7 +1,6 @@
 using FluentAssertions;
 using MatrTech.Utilities.Mongo.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 

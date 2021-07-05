@@ -76,7 +76,19 @@ namespace MatrTech.Utilities.Mongo.UnitTests
                 .BeTrue();
         }
 
+        [TestMethod]
+        public void CollectionExists_CollectionDoesNotExist_ShouldBeFalse()
+        {
+            var databaseName = $"{Guid.NewGuid()}";
+            var collectionName = $"{Guid.NewGuid()}";
+            var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
+            context.GetCollection(collectionName)
+                .Should()
+                .BeNull();
+        }
+
         private class TestDocument : MongoDocumentBase { }
+
         private class OtherTestDocument : MongoDocumentBase { }
 
         private class TestContext : MongoContext
@@ -89,6 +101,8 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             public IMongoCollection<TestDocument> TestCollection { get; set; } = null!;
             public IMongoCollection<OtherTestDocument> OtherTestCollection { get; set; } = null!;
         }
+
+        private class UnattachedCollection { }
 
         private class NotContextDerived { }
     }

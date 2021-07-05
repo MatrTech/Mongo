@@ -3,7 +3,6 @@ using MatrTech.Utilities.Mongo.Interfaces;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,6 +38,8 @@ namespace MatrTech.Utilities.Mongo.Models
         private string GetCollectionName<TDocument>()
             => typeof(TDocument).ToString().Replace("Document", "");
 
+        private string GetCollectionName(string propertyName)
+            => propertyName.Replace("Collection", string.Empty);
 
         private void InitializeCollections()
         {
@@ -55,17 +56,27 @@ namespace MatrTech.Utilities.Mongo.Models
 #endif
                     {
                         collections.Add(genericType);
-                        var method = typeof(IMongoDatabase).GetMethod(nameof(IMongoDatabase.GetCollection)) ?? throw new Exception();
-                        method = method.MakeGenericMethod(genericType) ?? throw new Exception();
-
-                        // TODO: verify name or get it from configuration
-                        var collectionName = propertyInfo.Name.Replace("Collection", string.Empty);
-                        var collectionInstance = method.Invoke(database, new object?[] { collectionName, null });
+                        object collectionInstance = CreateCollectionInstance(propertyInfo, genericType);
 
                         propertyInfo.SetValue(this, collectionInstance);
                     }
                 });
             // TODO: We might want to verify if the collection actually exist.
+        }
+
+        private object CreateCollectionInstance(System.Reflection.PropertyInfo propertyInfo, Type genericType)
+        {
+            var method = typeof(IMongoDatabase).GetMethod(nameof(IMongoDatabase.GetCollection))
+                ?? throw new NullReferenceException($"Could not find method {nameof(IMongoDatabase.GetCollection)}");
+
+            method = method.MakeGenericMethod(genericType)
+                ?? throw new NullReferenceException($"Could not make {nameof(IMongoDatabase.GetCollection)} a generic method");
+
+            var collectionName = GetCollectionName(propertyInfo.Name);
+            var collectionInstance = method.Invoke(database, new object?[] { collectionName, null })
+                ?? throw new NullReferenceException("Could not resolve collection instance");
+
+            return collectionInstance;
         }
     }
 }

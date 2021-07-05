@@ -33,6 +33,11 @@ namespace MatrTech.Utilities.Mongo.Models
             return database.GetCollection<TDocument>(documentName);
         }
 
+        public IMongoCollection GetCollection(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         private string GetCollectionName<TDocument>()
             => typeof(TDocument).ToString().Replace("Document", "");
 
@@ -41,7 +46,7 @@ namespace MatrTech.Utilities.Mongo.Models
 
         private void InitializeCollections()
         {
-            this.GetType().GetProperties()
+            GetType().GetProperties()
                 .Where(propertyInfo => propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(MongoCollectionBase<>))
                 .ToList()
                 .ForEach(propertyInfo =>
@@ -75,11 +80,6 @@ namespace MatrTech.Utilities.Mongo.Models
                 ?? throw new NullReferenceException("Could not resolve collection instance");
 
             return collectionInstance;
-        }
-
-        public IMongoCollection GetCollection(string name)
-        {
-            throw new NotImplementedException();
         }
     }
 }

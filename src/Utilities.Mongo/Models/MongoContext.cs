@@ -47,7 +47,7 @@ namespace MatrTech.Utilities.Mongo.Models
         private void InitializeCollections()
         {
             GetType().GetProperties()
-                .Where(propertyInfo => propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(MongoCollectionBase<>))
+                .Where(propertyInfo => propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(IMongoCollection<>))
                 .ToList()
                 .ForEach(propertyInfo =>
                 {

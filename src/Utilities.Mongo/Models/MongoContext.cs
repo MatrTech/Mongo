@@ -38,10 +38,10 @@ namespace MatrTech.Utilities.Mongo.Models
             throw new NotImplementedException();
         }
 
-        private string GetCollectionName<TDocument>()
+        private static string GetCollectionName<TDocument>()
             => typeof(TDocument).ToString().Replace("Document", "");
 
-        private string GetCollectionName(string propertyName)
+        private static string GetCollectionName(string propertyName)
             => propertyName.Replace("Collection", string.Empty);
 
         private void InitializeCollections()

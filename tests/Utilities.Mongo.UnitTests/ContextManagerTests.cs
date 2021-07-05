@@ -82,9 +82,9 @@ namespace MatrTech.Utilities.Mongo.UnitTests
             var databaseName = $"{Guid.NewGuid()}";
             var collectionName = $"{Guid.NewGuid()}";
             var context = ContextManager.Create<TestContext>(connectionUrl, databaseName);
-            context.GetCollection(collectionName)
+            context.CollectionExists(collectionName)
                 .Should()
-                .BeNull();
+                .BeFalse();
         }
 
         private class TestDocument : MongoDocumentBase { }

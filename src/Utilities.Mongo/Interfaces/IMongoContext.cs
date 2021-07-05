@@ -19,6 +19,13 @@ namespace MatrTech.Utilities.Mongo.Interfaces
         /// <returns>True if the collection with <paramref name="collectionName"/> exists, otherwise false.</returns>
         Task<bool> CollectionExistsAsync(string collectionName);
 
+        /// <summary>
+        /// Gets a collection by <paramref name="name"/>.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>A not specifically defined collection.</returns>
+        IMongoCollection GetCollection(string name);
+
         IMongoCollection<TDocument> GetCollection<TDocument>()
             where TDocument : MongoDocumentBase;
     }

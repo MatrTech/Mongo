@@ -10,6 +10,13 @@ namespace MatrTech.Utilities.Mongo
     /// </summary>
     public class ContextManager
     {
+        /// <summary>
+        /// Creates a Context from the <paramref name="connectionUrl"/> and the <paramref name="databaseName"/>.
+        /// </summary>
+        /// <typeparam name="TContext">The Context type to create.</typeparam>
+        /// <param name="connectionUrl">The ConnectionUrl to connect the Context to.</param>
+        /// <param name="databaseName">The name of the database to connect to.</param>
+        /// <returns>The Context of Type <typeparamref name="TContext"/>.</returns>
         public static TContext Create<TContext>(string connectionUrl, string databaseName)
             where TContext : MongoContext
         {

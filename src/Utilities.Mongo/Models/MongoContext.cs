@@ -24,9 +24,7 @@ namespace MatrTech.Utilities.Mongo.Models
             => database.CollectionExists(collectionName);
 
         public Task<bool> CollectionExistsAsync(string collectionName)
-        {
-            throw new System.NotImplementedException();
-        }
+            => database.CollectionExistsAsync(collectionName);
 
         public IMongoCollection<TDocument> GetCollection<TDocument>()
             where TDocument : MongoDocumentBase
@@ -77,6 +75,11 @@ namespace MatrTech.Utilities.Mongo.Models
                 ?? throw new NullReferenceException("Could not resolve collection instance");
 
             return collectionInstance;
+        }
+
+        public IMongoCollection GetCollection(string name)
+        {
+            throw new NotImplementedException();
         }
     }
 }

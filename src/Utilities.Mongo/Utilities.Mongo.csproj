@@ -24,6 +24,7 @@
     <BuildVersion>$([System.DateTime]::Now.ToString("yyMMddHHmm"))</BuildVersion>
     <Version>$(MajorVersion).$(MinorVersion).$(PatchVersion).$(BuildVersion)</Version>
   </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="MatrTech.Utilities.Extensions.Mongo" Version="0.0.2" />
     <PackageReference Include="MatrTech.Utilities.Helpers" Version="0.0.1" />

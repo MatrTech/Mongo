@@ -1,9 +1,9 @@
 ﻿using MatrTech.Utilities.Helpers;
-using MatrTech.Utilities.Mongo.Models;
+using Matr.Mongo.Models;
 using MongoDB.Driver;
 using System;
 
-namespace MatrTech.Utilities.Mongo
+namespace Matr.Mongo
 {
     /// <summary>
     /// Manager of everything involving MongoContexts

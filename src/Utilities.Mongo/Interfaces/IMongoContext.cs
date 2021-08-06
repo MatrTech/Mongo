@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using System.Threading.Tasks;
 
-namespace MatrTech.Utilities.Mongo.Interfaces
+namespace Matr.Mongo.Interfaces
 {
     public interface IMongoContext
     {

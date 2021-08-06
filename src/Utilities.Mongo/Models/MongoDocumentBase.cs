@@ -1,7 +1,7 @@
 using System;
 using MongoDB.Bson;
 
-namespace MatrTech.Utilities.Mongo
+namespace Matr.Mongo
 {
     public abstract class MongoDocumentBase
     {

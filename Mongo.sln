@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EE0CE18B-8F6B-4B69-ABB2-5D9800CEF8BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Mongo", "src\Utilities.Mongo\Utilities.Mongo.csproj", "{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Mongo", "src\Mongo.Core\Mongo.Core.csproj", "{0DB632F4-E2BD-4D11-8CC7-46EFEA41D8F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5F878BBB-5224-4508-8427-FAFD3FD084AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Mongo.UnitTests", "tests\Utilities.Mongo.UnitTests\Utilities.Mongo.UnitTests.csproj", "{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Mongo.UnitTests", "tests\Mongo.Core.UnitTests\Mongo.Core.UnitTests.csproj", "{5AEBBD2E-379F-42DD-90BF-C5569C0A25EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFD5283B-625E-481F-A805-A33CBF719B03}"
 	ProjectSection(SolutionItems) = preProject

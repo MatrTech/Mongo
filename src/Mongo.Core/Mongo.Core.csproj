@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <RootNamespace>MatrTech.Utilities.Mongo</RootNamespace>
+    <RootNamespace>Matr.Mongo</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <OutputPath>..\..\..\..\local-packages</OutputPath>
     <Nullable>enable</Nullable>
@@ -10,20 +10,21 @@
     <WarningsAsErrors />
 
 
-    <PackageId>MatrTech.Utilities.Mongo</PackageId>
+    <PackageId>Matr.Mongo</PackageId>
     <Authors>MatrTech</Authors>
     <Company>MatrTech</Company>
     <Copyright>MatrTech 2021</Copyright>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <MajorVersion>0</MajorVersion>
-    <MinorVersion>0</MinorVersion>
-    <PatchVersion>1</PatchVersion>
-    <BuildVersion>$([System.DateTime]::Now.ToString("yyMMddHHmm"))</BuildVersion>
-    <Version>$(MajorVersion).$(MinorVersion).$(PatchVersion).$(BuildVersion)</Version>
-  </PropertyGroup>
+  <Target Name="SetVersion" BeforeTargets="Build">
+    <PropertyGroup>
+      <MajorVersion>0</MajorVersion>
+      <MinorVersion>0</MinorVersion>
+      <PatchVersion>2</PatchVersion>
+      <BuildVersion Condition="'$(DesignTimeBuild)' != 'true' OR '$(BuildingProject)' == 'true'">$([System.DateTime]::Now.ToString("MMddHHmmss"))</BuildVersion>
+      <PackageVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion).$(BuildVersion)</PackageVersion>
+    </PropertyGroup>
+  </Target>
   
   <ItemGroup>
     <PackageReference Include="MatrTech.Utilities.Extensions.Mongo" Version="0.0.2" />

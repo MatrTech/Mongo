@@ -1,12 +1,12 @@
 using MatrTech.Utilities.Extensions.Mongo;
-using MatrTech.Utilities.Mongo.Interfaces;
+using Matr.Mongo.Interfaces;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MatrTech.Utilities.Mongo.Models
+namespace Matr.Mongo.Models
 {
     public abstract class MongoContext : IMongoContext
     {

@@ -1,11 +1,11 @@
 using FluentAssertions;
-using MatrTech.Utilities.Mongo.Models;
+using Matr.Mongo.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 
-namespace MatrTech.Utilities.Mongo.UnitTests
+namespace Matr.Mongo.UnitTests
 {
     [TestClass]
     public class ContextManagerTests

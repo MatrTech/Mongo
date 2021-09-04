@@ -1,4 +1,4 @@
-﻿namespace MatrTech.Utilities.Mongo
+﻿namespace Matr.Mongo
 {
     public class DatabaseSettings
     {

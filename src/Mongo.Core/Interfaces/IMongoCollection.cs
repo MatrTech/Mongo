@@ -1,4 +1,4 @@
-﻿namespace MatrTech.Utilities.Mongo.Interfaces
+﻿namespace Matr.Mongo.Interfaces
 {
     public interface IMongoCollection
     {
